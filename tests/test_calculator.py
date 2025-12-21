@@ -1,6 +1,6 @@
 import pytest
 import sys
-from app.main import add, divide
+from app.calculator import add, divide
 
 
 @pytest.mark.smoke
