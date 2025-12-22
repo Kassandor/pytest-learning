@@ -1,5 +1,7 @@
-import pytest
 import sys
+
+import pytest
+
 from app.calculator import add, divide
 
 
@@ -49,3 +51,14 @@ def test_new_python_feature():
 def test_add_floats_bug():
     # Этот тест будет падать из-за особенностей представления float в Python
     assert add(0.1, 0.2) == 0.3
+
+
+@pytest.mark.parametrize('a, b, result', [
+    pytest.param(1, 2, 3, id='positive'),
+    pytest.param(-5, -3, -8, id='negative'),
+    pytest.param(-10, 5, -5, id='mixed'),
+    pytest.param(1, 0, 1, id='by_zero'),
+    pytest.param(0.1, 0.2, 0.3, id='float'),
+])
+def test_add_paramtrized(a, b, result):
+    assert add(a, b) == pytest.approx(result)

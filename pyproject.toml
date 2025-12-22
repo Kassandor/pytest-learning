@@ -6,4 +6,13 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+]
+[tool.pytest.ini_options]
+addopts = "-v --strict-markers --cov=app --cov-report=term-missing"
+testpaths = ["tests"]
+markers = [
+    "smoke: Дымовые тесты для критического функционала",
+    "regression: Полный набор регрессионных тестов",
+    "slow: Медленные тесты (например, с доступом к сети)"
 ]
